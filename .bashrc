@@ -97,9 +97,16 @@ function delpyc() {
   find . -name "*.pyc" -delete
 }
 
-# change file extension for multiple files at once
+# change file extension for all matching files in current dir
+# usage: ext {current_ext} {new_ext}
 function ext() {
   for f in *.$1; do mv $f `basename $f .$1`.$2; done;
+}
+
+# add extension to files without
+# usage: addext {path} {ext_to_add}
+function addext() {
+  find $1 -type f -not -name "*.*" -exec mv "{}" "{}".$2 \;
 }
 
 # count the number of css selectors in a file

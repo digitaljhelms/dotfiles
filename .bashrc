@@ -39,11 +39,14 @@ fi
 
 # http://askubuntu.com/a/24422
 PS1="\[\033]0;\w\007\]"
-PS1+="\[$orange\]\h" # host
-PS1+="\[$reset$white\]@"
-PS1+="\[$yellow\]\u:" # username
-PS1+="\[$reset$white\] "
-PS1+="\[$green\]\W" # working directory
+PS1+="["
+PS1+="\[$black\]\t" # time
+PS1+="\[$reset\]"
+PS1+="] "
+PS1+="\[$cyan\]\h" # host
+PS1+="\[$white\]@"
+PS1+="\[$purple\]\u\[$reset\]: " # username
+PS1+="\[$blue\]\W" # working directory
 
 # Git Command Completion & Git-aware PS1
 if [ -e ~/.git-prompt.sh ]; then
@@ -57,7 +60,7 @@ if [ -e ~/.git-completion.bash ]; then
   # GIT_PS1_SHOWSTASHSTATE=true
   # GIT_PS1_STATESEPARATOR=
   # GIT_PS1_SHOWCOLORHINTS=true
-  PS1+="\$(__git_ps1 \"\[$white\] on \[$cyan\]%s \")" # git repository details
+  PS1+="\$(__git_ps1 \"\[$reset\](\[$black\]on \[$yellow\]%s\[$reset\]) \")" # git repository details
 fi
 
 PS1+="\[$reset$white\]\$ \[$reset\]" # $ (and reset color)

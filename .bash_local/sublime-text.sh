@@ -1,3 +1,4 @@
+# {{{
 # sublime text 2
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 #alias st='subl'
@@ -23,3 +24,4 @@ function st() {
   fi
 }
 export -f st
+# }}}

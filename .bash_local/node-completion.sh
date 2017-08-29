@@ -1,3 +1,5 @@
+# npm completion >> ~/.bashrc
+
 # {{{
 # Node Completion - Auto-generated, do not touch.
 shopt -s progcomp

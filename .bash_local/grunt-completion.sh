@@ -1,4 +1,4 @@
 # {{{
 # Grunt auto-completion
-eval "$(grunt --completion=bash)"
+# eval "$(grunt --completion=bash)"
 # }}}

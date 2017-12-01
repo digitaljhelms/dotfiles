@@ -1,7 +1,7 @@
 # {{{
 # Setting PATH for Python 3.5
 # The original version is saved in .bash_profile.pysave
-# export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 # 
 ## Django
 # export PYTHONPATH="/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/site-packages"

@@ -64,6 +64,8 @@ ZSH_THEME="TheOne"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  node
+  npm
   vscode
   web-search
 )
@@ -78,11 +80,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vi'
+else
+  export EDITOR='code'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -98,3 +100,31 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Default compiler
+export CC=/usr/bin/gcc
+
+# Added by n-install (see http://git.io/n-install-repo).
+export N_PREFIX="$HOME/Sandbox/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+
+# git + hub = github
+eval "$(hub alias -s)"
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+if [ -e ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# spotify controls
+alias spotify='osascript ~/Sandbox/SpotifyControl/SpotifyControl'
+
+# Function definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_functions, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+if [ -e ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi

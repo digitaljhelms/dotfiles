@@ -22,6 +22,9 @@ alias allcron='for user in $(cut -f1 -d: /etc/passwd); do echo $user; crontab -u
 # ack, ignore case, pipe output through "less" command and ignore redirects + chop long lines
 alias ick='ack -i --pager="less -R -S"'
 
+# https://stackoverflow.com/a/12312982/3550697
+alias timestamp='date +%s'
+
 # cp w/ per-file progress indicator
 # alias cp='rsync -WavP'
 

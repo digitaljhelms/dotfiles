@@ -168,7 +168,8 @@ function trash() {
 export LS_OPTIONS='--color=auto'
 export CLICOLOR=1
 # default is exfxcxdxbxegedabagacad
-export LSCOLORS=Dxfxcxdxbxegedabagacad
+export LSCOLORS=GxFxCxDxBxegedabagaced # for dark terminals
+#export LSCOLORS=ExFxBxDxCxegedabagacad # for light terminals
 
 # Default compiler
 export CC=/usr/bin/gcc

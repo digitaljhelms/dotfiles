@@ -8,7 +8,19 @@ export ZSH="/Users/jhelms/.oh-my-zsh"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="TheOne"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="TheOne"
+ZSH_THEME="spaceship"
+SPACESHIP_PROMPT_ORDER=(
+  time
+  vi_mode
+  user
+  host
+  char
+  dir
+  git
+)
+SPACESHIP_PROMPT_ADD_NEWLINE=false
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random

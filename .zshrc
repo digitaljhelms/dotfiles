@@ -4,23 +4,29 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/jhelms/.oh-my-zsh"
 
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="agnoster"
 # ZSH_THEME="TheOne"
+# ZSH_THEME="hyperzsh"
 ZSH_THEME="spaceship"
 SPACESHIP_PROMPT_ORDER=(
   time
-  vi_mode
   user
   host
-  char
   dir
   git
+  node
+  # package
+  char
 )
 SPACESHIP_PROMPT_ADD_NEWLINE=false
+# SPACESHIP_TIME_SHOW=true
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -67,9 +73,6 @@ SPACESHIP_PROMPT_ADD_NEWLINE=false
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -80,6 +83,7 @@ plugins=(
   npm
   vscode
   web-search
+  z
 )
 
 source $ZSH/oh-my-zsh.sh

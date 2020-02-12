@@ -36,11 +36,15 @@ function delpyc() {
 # change file extension for all matching files in current dir
 # usage: ext {current_ext} {new_ext}
 function ext() {
+  echo "converting all matching file extensions in"
+  pwd
   for f in *.$1; do mv $f `basename $f .$1`.$2; done;
 }
 
 # add extension to files without
 # usage: addext {path} {ext_to_add}
 function addext() {
+  echo "adding file extensions to all files matched in"
+  pwd
   find $1 -type f -not -name "*.*" -exec mv "{}" "{}".$2 \;
 }

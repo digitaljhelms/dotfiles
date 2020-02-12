@@ -89,6 +89,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+unsetopt nomatch
 
 # export MANPATH="/usr/local/man:$MANPATH"
 

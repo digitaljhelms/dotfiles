@@ -124,9 +124,6 @@ export CC=/usr/bin/gcc
 # Added by n-install (see http://git.io/n-install-repo).
 export N_PREFIX="$HOME/Sandbox/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
-# git + hub = github
-eval "$(hub alias -s)"
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -135,9 +132,6 @@ if [ -e ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# spotify controls
-alias spotify='osascript ~/Sandbox/SpotifyControl/SpotifyControl'
-
 # Function definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_functions, instead of adding them here directly.
@@ -145,3 +139,13 @@ alias spotify='osascript ~/Sandbox/SpotifyControl/SpotifyControl'
 if [ -e ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
+
+# Private definitions.
+# Create a directory at ~/.bash_local that contains bash aliases,
+# functions, configurations, etc. reserved specifically for
+# your profile. The .gitignore rule will exclude any files in
+# ~/.bash_local that contain "secure" in the filename.
+for f in $(command ls ~/.bash_local); do
+    f="$HOME/.bash_local/$f"
+    test -f "$f" && . "$f"
+done

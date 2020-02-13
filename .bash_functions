@@ -53,15 +53,52 @@ function addext() {
 # usage: guniq {len}
 function guniq() {
   # date +%s | shasum | base64 | head -c 10; echo
-  ((test -n "$1" && test "$1" -ge 0) && \
-    openssl rand -base64 $1 | colrm $(expr $1 + 1) | tr -d '\n') 2>&-;
-  # https://stackoverflow.com/a/30948155
-  # chars='!@#$%^&*()-_=+'
-  # ((test -n "$1" && test "$1" -ge 0) &&
-  #   { </dev/urandom LC_ALL=C grep -ao '[A-Za-z0-9]' \
-  #         | head -n$((RANDOM % $1))
-  #     echo ${chars:$((RANDOM % ${#chars})):1}   # Random special char.
-  #   } \
-  #   | sort -R \
-  #   | tr -d '\n')
+
+  CHARS="!@#$%^&*()-_=+"
+
+  if [[ -n "$1" && "$1" -ge 0 ]]; then
+    if ! [ -x "$(command -v shuf)" ]; then
+      printf "%s" "The shuf command recommended, but not installed; would you like to install it using Homebrew? [y/N] "
+      read shufinstall
+      if [[ "$shufinstall" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
+        if ! [ -x "$(command -v brew)" ]; then
+          printf "Homebrew is not installed, would you like to install it? [y/N] "
+          read brewinstall
+          if [[ "$brewinstall" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
+            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+          else
+            echo -e "Aborting" >&2
+            return
+          fi
+        fi
+
+        brew install coreutils
+      fi
+    fi
+
+    if ! [ -x "$(command -v shuf)" ]; then
+      SHUFFLE="gshuf"
+    elif ! [ -x "$(command -v gshuf)" ]; then
+      SHUFFLE="shuf"
+    else
+      SHUFFLE="sort -R"
+    fi
+
+    echo "$(openssl rand -base64 $1+${#CHARS} \
+      | (echo ${CHARS} && cat) \
+      | fold -w1 \
+      | eval ${SHUFFLE} \
+      | tr -d '\n' \
+      | colrm $(expr $1 + 1))"
+
+    # https://stackoverflow.com/a/30948155
+    # { </dev/urandom LC_ALL=C grep -ao '[A-Za-z0-9]' \
+    #       | head -n$((RANDOM % $1))
+    #   echo ${CHARS:$((RANDOM % ${#CHARS})):1}   # Random special char.
+    # } \
+    # | shuf \
+    # | tr -d '\n'; echo
+  else
+    echo "Command requires a length\nex: $ $0 32"
+  fi
 }

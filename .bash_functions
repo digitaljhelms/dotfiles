@@ -48,3 +48,20 @@ function addext() {
   pwd
   find $1 -type f -not -name "*.*" -exec mv "{}" "{}".$2 \;
 }
+
+# generate unique string X characters in length
+# usage: genpass {len}
+function genpass() {
+  # date +%s | shasum | base64 | head -c 10; echo
+  ((test -n "$1" && test "$1" -ge 0) && \
+    openssl rand -base64 $1 | colrm $(expr $1 + 1) | tr -d '\n') 2>&-;
+  # https://stackoverflow.com/a/30948155
+  # chars='!@#$%^&*()-_=+'
+  # ((test -n "$1" && test "$1" -ge 0) &&
+  #   { </dev/urandom LC_ALL=C grep -ao '[A-Za-z0-9]' \
+  #         | head -n$((RANDOM % $1))
+  #     echo ${chars:$((RANDOM % ${#chars})):1}   # Random special char.
+  #   } \
+  #   | sort -R \
+  #   | tr -d '\n')
+}

@@ -50,8 +50,8 @@ function addext() {
 }
 
 # generate unique string X characters in length
-# usage: genpass {len}
-function genpass() {
+# usage: guniq {len}
+function guniq() {
   # date +%s | shasum | base64 | head -c 10; echo
   ((test -n "$1" && test "$1" -ge 0) && \
     openssl rand -base64 $1 | colrm $(expr $1 + 1) | tr -d '\n') 2>&-;

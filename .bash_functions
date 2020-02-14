@@ -76,11 +76,11 @@ function guniq() {
       fi
     fi
 
+    SHUFFLE="shuf"
     if ! [ -x "$(command -v shuf)" ]; then
       SHUFFLE="gshuf"
-    elif ! [ -x "$(command -v gshuf)" ]; then
-      SHUFFLE="shuf"
-    else
+    fi
+    if ! [ -x "$(command -v gshuf)" ]; then
       SHUFFLE="sort -R"
     fi
 

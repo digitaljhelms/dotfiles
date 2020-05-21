@@ -149,3 +149,7 @@ for f in $(command ls ~/.bash_local); do
     f="$HOME/.bash_local/$f"
     test -f "$f" && . "$f"
 done
+
+# https://github.com/zeit/hyper/issues/2144#issuecomment-326741620
+# https://superuser.com/questions/645599/why-is-a-percent-sign-appearing-before-each-prompt-on-zsh-in-windows
+unsetopt PROMPT_SP

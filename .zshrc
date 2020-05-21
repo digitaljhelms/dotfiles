@@ -26,7 +26,7 @@ SPACESHIP_PROMPT_ORDER=(
   char
 )
 SPACESHIP_PROMPT_ADD_NEWLINE=false
-# SPACESHIP_TIME_SHOW=true
+SPACESHIP_TIME_SHOW=true
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random

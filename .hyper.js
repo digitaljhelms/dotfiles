@@ -161,6 +161,11 @@ module.exports = {
     // "hyper-transparent-dynamic"
   ],
 
+  // https://github.com/hharnisc/hypercwd#configuration
+  hypercwd: {
+    initialWorkingDirectory: '~/'
+  },
+
   // https://github.com/Hyperline/hyperline#configuring-plugins
   hyperline: {
     plugins: [

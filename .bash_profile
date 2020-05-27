@@ -33,8 +33,10 @@ fi
 # Create a directory at ~/.bash_local that contains bash
 # aliases, configurations, etc. reserved specifically for
 # your profile. The .gitignore rule will exclude any files in
-# ~/.bash_local that contain "secure" in the filename.
-for f in $(command ls ~/.bash_local); do
+# .bash_local that contain "secure" in the filename.
+if [ -d ~/.bash_local ]; then
+  for f in $(command ls ~/.bash_local); do
     f="$HOME/.bash_local/$f"
     test -f "$f" && . "$f"
-done
+  done
+fi

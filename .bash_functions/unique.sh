@@ -16,6 +16,7 @@ function unique() {
     return
   fi
 
+  # https://www.redlever-solutions.com/blog/howto-generate-secure-passwords-with-openssl
   NUMBYTES=`echo $LEN | awk '{print int($1*1.16)+1}'`
 
   if ! [ -x "$(command -v shuf)" ]; then

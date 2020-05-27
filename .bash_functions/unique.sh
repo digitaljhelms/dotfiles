@@ -1,4 +1,4 @@
-# generate unique string X characters in length
+# generate unique string X characters in length, with or without symbols
 # usage: unique [--no-symbols] {length}
 function unique() {
   # date +%s | shasum | base64 | head -c 10; echo

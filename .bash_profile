@@ -6,7 +6,7 @@
 
 # include .bashrc if it exists
 if [ -e ~/.bashrc ]; then
-    . ~/.bashrc
+  . ~/.bashrc
 fi
 
 # Alias definitions.
@@ -14,7 +14,7 @@ fi
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [ -e ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # Function definitions.

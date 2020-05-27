@@ -133,11 +133,15 @@ if [ -e ~/.bash_aliases ]; then
 fi
 
 # Function definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_functions, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -e ~/.bash_functions ]; then
-    . ~/.bash_functions
+# Create a directory at ~/.bash_local that contains bash
+# functions reserved specifically for your profile. The
+# .gitignore rule will exclude any files in .bash_functions
+# that contain "secure" in the filename.
+if [ -d ~/.bash_functions ]; then
+  for f in $(command ls ~/.bash_functions); do
+    f="$HOME/.bash_functions/$f"
+    test -f "$f" && . "$f"
+  done
 fi
 
 # Private definitions.
@@ -145,10 +149,13 @@ fi
 # functions, configurations, etc. reserved specifically for
 # your profile. The .gitignore rule will exclude any files in
 # ~/.bash_local that contain "secure" in the filename.
-for f in $(command ls ~/.bash_local); do
-    f="$HOME/.bash_local/$f"
-    test -f "$f" && . "$f"
-done
+if [ -d ~/.bash_local ]; then
+  for f in $(command ls ~/.bash_local); do
+      f="$HOME/.bash_local/$f"
+      test -f "$f" && . "$f"
+  done
+fi
+
 
 # https://github.com/zeit/hyper/issues/2144#issuecomment-326741620
 # https://superuser.com/questions/645599/why-is-a-percent-sign-appearing-before-each-prompt-on-zsh-in-windows

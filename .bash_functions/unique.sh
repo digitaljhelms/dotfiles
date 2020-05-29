@@ -4,12 +4,12 @@ function unique() {
   # date +%s | shasum | base64 | head -c 10; echo
 
   PROGNAME=$0
+  CHARS="!@#$%^&*()-_=+/"
   
   if [[ -n $1 && $1 == "--no-symbols" && -n $2 && $2 -ge 0 ]]; then
     CHARS=""
     LEN=$2
   elif [[ -n $1 && $1 -ge 0 ]]; then
-    CHARS="!@#$%^&*()-_" # /, =, and + are symbols 
     LEN=$1
   else
     echo -e "Usage: $PROGNAME [--no-symbols] <length>" >&2
@@ -46,6 +46,7 @@ function unique() {
     SHUFFLE="sort -R"
   fi
 
+  # "=+/" are openssl symbols by default
   echo "$(openssl rand -base64 ${NUMBYTES}+${#CHARS} \
     | tr -d "=+/" \
     | (echo ${CHARS} && cat) \

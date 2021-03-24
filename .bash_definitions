@@ -7,7 +7,7 @@ if [ -e ~/.bash_aliases ]; then
 fi
 
 # Function definitions.
-# Create a directory at ~/.bash_local that contains bash
+# Create a directory at ~/.bash_functions that contains bash
 # functions reserved specifically for your profile. The
 # .gitignore rule will exclude any files in .bash_functions
 # that contain "secure" in the filename.
